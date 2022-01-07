@@ -17,3 +17,20 @@ repos:
     hooks:
         - id: flake8
           exclude: output|data
+-   repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.2.2
+    hooks:
+        - id: nbqa-black
+        - id: nbqa-pyupgrade
+          args: [--py36-plus]
+        - id: nbqa-isort
+          exclude: output|data
+        - id: nbqa-flake8
+-   repo: local
+    hooks:
+        - id: jupyter-nb-clear-output
+          name: jupyter-nb-clear-output
+          files: \.ipynb$
+          stages: [commit]
+          language: system
+          entry: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace
