@@ -1,7 +1,13 @@
-﻿# hermione-tutorial
+﻿# Machine Learning/Data Sciece Repository Template for
 
-Project started in January 05, 2022.
-
+## Components
+- The directory structure is taken from https://github.com/A3Data/hermione
+- The following changes were made to it:
+  - the dependency management is done with poetry instead of pip
+  - added a python .gitignore file 
+  - added commit hooks to allow automatic formatting checks before commits
+    
+    
 ## Set up 
 
 - install dependencies with `poetry install`
