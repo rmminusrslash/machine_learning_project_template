@@ -16,7 +16,6 @@ matplotlib = "^3.5.1"
 mlflow = "^1.22.0"
 mlxtend = "^0.19.0"
 plotly = "^5.5.0"
-pytest = "^6.2.5"
 seaborn = "^0.11.2"
 scikit-learn = "^1.0.2"
 statsmodels = "^0.13.1"
@@ -41,6 +40,7 @@ pingouin = "0.4.0"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.16.0"
+pytest = "^6.2.5"
 
 [tool.black]
 line-length = 79
