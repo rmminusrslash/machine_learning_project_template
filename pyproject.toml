@@ -2,7 +2,7 @@
 name = "hermione-tutorial"
 version = "0.1.0"
 description = ""
-authors = ["Lina Weichbrodt <lina.weichbrodt@gmail.com>"]
+authors = []
 
 [tool.poetry.dependencies]
 python = "~3.7.1"
