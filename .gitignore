@@ -3,6 +3,9 @@ mlruns/
 .metaflow 
 data/ 
 .idea
+# ignore the pyenv file since we dont want to update it manually
+# and it could differ in the patch version
+.python-version
 
 # python gitignore from https://github.com/github/gitignore/blob/main/Python.gitignore
 # Byte-compiled / optimized / DLL files
