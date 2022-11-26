@@ -10,10 +10,12 @@ the python version, pinning transitive dependencies or creating a file so all de
     
 ## Set up 
 
+- (optional): install pyenv to confortably switch between python versions and install a recent python version
+- activate the installed python version with `$ pyenv local *python_version*` or use the already present python version
 - define the python version in pyproject.toml and in .github/workflows/pytest.yaml and the .pre-commit-config.yaml
-- (optional): install pyenv to confortably switch between python versions
+- update the project name in pyproject.toml
 - install dependencies with `poetry install`. Commit the file poetry.lock that contains the installed dependencies.
-- run `pre-commit install` to set up the git hook scripts in the .git directory 
+- activate the environment with `poetry shell` and run `pre-commit install` to set up the git hook scripts in the .git directory 
   of your project
 - run `pre-commit autoupdate` to update the repository references in the 
  .pre-commit-config.yaml file
