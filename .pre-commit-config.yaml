@@ -1,4 +1,6 @@
 ---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
 repos:
     - repo: https://github.com/asottile/seed-isort-config
       rev: v2.2.0
@@ -39,3 +41,14 @@ repos:
       rev: 0.2.2 # or specific tag
       hooks:
           - id: yamlfmt
+    - repo: local
+      hooks:
+          # run your unittests
+          - id: unittests
+            name: unittests
+            entry: pytest -m "not slow" .
+            language: system
+            types: [python]
+            require_serial: true
+            always_run: True
+            pass_filenames: false
