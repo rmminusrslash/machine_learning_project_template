@@ -12,6 +12,7 @@ the python version, pinning transitive dependencies or creating a file so all de
 
 - (optional): install pyenv to confortably switch between python versions and install a recent python version
 - activate the installed python version with `$ pyenv local *python_version*` or use the already present python version
+- make poetry use this version `poetry env use $(pyenv which python)`
 - define the python version in pyproject.toml and in .github/workflows/pytest.yaml and the .pre-commit-config.yaml
 - update the project name in pyproject.toml
 - install dependencies with `poetry install`. Commit the file poetry.lock that contains the installed dependencies.
