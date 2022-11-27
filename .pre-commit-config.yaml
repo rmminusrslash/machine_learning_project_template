@@ -52,3 +52,10 @@ repos:
             require_serial: true
             always_run: True
             pass_filenames: false
+          # matches conventional commit messages
+          # https://www.conventionalcommits.org/en/v1.0.0/#summary
+          - id: verify-commit-msg
+            name: Conventional commit message prefix
+            entry: commit-msg.sh
+            language: script
+            stages: [commit-msg]
