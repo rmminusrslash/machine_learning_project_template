@@ -10,7 +10,7 @@ repos:
           - id: isort
             args: [--profile=black, --line-length=79]
     - repo: https://github.com/ambv/black
-      rev: 22.10.0
+      rev: 23.3.0
       hooks:
           - id: black
             language_version: python3.8
@@ -21,7 +21,7 @@ repos:
           - id: flake8
             exclude: output|data
     - repo: https://github.com/nbQA-dev/nbQA
-      rev: 1.5.3
+      rev: 1.7.0
       hooks:
           - id: nbqa-black
           - id: nbqa-pyupgrade
@@ -38,6 +38,6 @@ repos:
             language: system
             entry: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace
     - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-      rev: 0.2.2 # or specific tags
+      rev: 0.2.3 # or specific tags
       hooks:
           - id: yamlfmt
