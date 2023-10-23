@@ -1,4 +1,6 @@
 ---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
 repos:
     - repo: https://github.com/asottile/seed-isort-config
       rev: v2.2.0
@@ -8,20 +10,20 @@ repos:
       rev: v5.10.1
       hooks:
           - id: isort
-            args: [--profile=black, --line-length=79]
+            args: [--profile=black, --line-length=88]
     - repo: https://github.com/ambv/black
-      rev: 22.10.0
+      rev: 23.3.0
       hooks:
           - id: black
-            language_version: python3.8
-            args: [--line-length=79]
+            language_version: python3.10
+            args: [--line-length=88]
     - repo: https://github.com/PyCQA/flake8
       rev: 6.0.0
       hooks:
           - id: flake8
             exclude: output|data
     - repo: https://github.com/nbQA-dev/nbQA
-      rev: 1.5.3
+      rev: 1.7.0
       hooks:
           - id: nbqa-black
           - id: nbqa-pyupgrade
@@ -38,6 +40,25 @@ repos:
             language: system
             entry: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace
     - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-      rev: 0.2.2 # or specific tags
+      rev: 0.2.3 # or specific tags
       hooks:
           - id: yamlfmt
+    - repo: local
+      hooks:
+          # run your unittests
+          - id: unittests
+            name: unittests
+            entry: pytest -m "not slow" .
+            language: system
+            types: [python]
+            require_serial: true
+            always_run: True
+            pass_filenames: false
+          # matches conventional commit messages
+          # https://www.conventionalcommits.org/en/v1.0.0/#summary
+          # requires pre-commit install --hook-type commit-msg
+          - id: verify-commit-msg
+            name: Conventional commit message prefix
+            entry: commit-msg.sh
+            language: script
+            stages: [commit-msg] 
