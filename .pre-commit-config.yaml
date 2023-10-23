@@ -2,23 +2,30 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
-    - repo: https://github.com/asottile/seed-isort-config
-      rev: v2.2.0
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.5.0
       hooks:
-          - id: seed-isort-config
+          - id: trailing-whitespace
+          - id: end-of-file-fixer
+          - id: check-yaml
+          - id: check-added-large-files
     - repo: https://github.com/pre-commit/mirrors-isort
       rev: v5.10.1
       hooks:
           - id: isort
             args: [--profile=black, --line-length=88]
+    - repo: https://github.com/asottile/seed-isort-config
+      rev: v2.2.0
+      hooks:
+          - id: seed-isort-config
     - repo: https://github.com/ambv/black
-      rev: 23.3.0
+      rev: 23.10.0
       hooks:
           - id: black
             language_version: python3.10
             args: [--line-length=88]
     - repo: https://github.com/PyCQA/flake8
-      rev: 6.0.0
+      rev: 6.1.0
       hooks:
           - id: flake8
             exclude: output|data
@@ -43,6 +50,11 @@ repos:
       rev: 0.2.3 # or specific tags
       hooks:
           - id: yamlfmt
+    - repo: https://github.com/pre-commit/mirrors-mypy
+      rev: v1.6.1
+      hooks:
+          - id: mypy
+            additional_dependencies: [pydantic] # add if use pydantic
     - repo: local
       hooks:
           # run your unittests
@@ -52,13 +64,15 @@ repos:
             language: system
             types: [python]
             require_serial: true
-            always_run: True
+            always_run: true
             pass_filenames: false
-          # matches conventional commit messages
-          # https://www.conventionalcommits.org/en/v1.0.0/#summary
-          # requires pre-commit install --hook-type commit-msg
+    # matches conventional commit messages
+    # https://www.conventionalcommits.org/en/v1.0.0/#summary
+    # requires pre-commit install --hook-type commit-msg
+    - repo: local
+      hooks:
           - id: verify-commit-msg
             name: Conventional commit message prefix
             entry: commit-msg.sh
             language: script
-            stages: [commit-msg] 
+            stages: [commit-msg]
