@@ -1,4 +1,6 @@
 ---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
 repos:
     - repo: https://github.com/asottile/seed-isort-config
       rev: v2.2.0
@@ -41,3 +43,22 @@ repos:
       rev: 0.2.3 # or specific tags
       hooks:
           - id: yamlfmt
+    - repo: local
+      hooks:
+          # run your unittests
+          - id: unittests
+            name: unittests
+            entry: pytest -m "not slow" .
+            language: system
+            types: [python]
+            require_serial: true
+            always_run: True
+            pass_filenames: false
+          # matches conventional commit messages
+          # https://www.conventionalcommits.org/en/v1.0.0/#summary
+          # requires pre-commit install --hook-type commit-msg
+          - id: verify-commit-msg
+            name: Conventional commit message prefix
+            entry: commit-msg.sh
+            language: script
+            stages: [commit-msg] 
