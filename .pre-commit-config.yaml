@@ -46,6 +46,7 @@ repos:
             files: \.ipynb$
             stages: [commit]
             language: system
+            # TODO: replace, jupyter 7 does not support plugins, needed to downgrade jupyter poetry add --upgrade notebook==6.4.12
             entry: jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace
     - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
       rev: 0.2.3 # or specific tags
